@@ -8,4 +8,5 @@ coverage/
 backups/
 *.dump
 *.log
+*.tsbuildinfo
 .DS_Store
