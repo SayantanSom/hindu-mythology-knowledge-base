@@ -1,0 +1,155 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ResearchStatus {
+  PROPOSED
+  CATALOGUED
+  IN_RESEARCH
+  REVIEWED
+  PUBLISHED
+}
+
+enum TextKind {
+  WORK
+  RECENSION
+  EDITION
+  TRANSLATION
+}
+
+model Scripture {
+  id                 String         @id @default(cuid())
+  slug               String         @unique
+  title              String
+  titleOriginal      String?
+  transliteration    String?
+  languageCode       String
+  scriptCode         String?
+  summary            String?
+  traditionalAuthor  String?
+  historicalNotes    String?
+  status             ResearchStatus @default(PROPOSED)
+  categories         ScriptureCategory[]
+  recensions         Recension[]
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  @@index([title])
+  @@index([languageCode, status])
+}
+
+model Category {
+  id          String              @id @default(cuid())
+  slug        String              @unique
+  name        String
+  description String?
+  parentId    String?
+  parent      Category?           @relation("CategoryTree", fields: [parentId], references: [id])
+  children    Category[]          @relation("CategoryTree")
+  scriptures  ScriptureCategory[]
+}
+
+model ScriptureCategory {
+  scriptureId String
+  categoryId  String
+  rationale   String?
+  sourceNote  String?
+  scripture   Scripture @relation(fields: [scriptureId], references: [id], onDelete: Cascade)
+  category    Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([scriptureId, categoryId])
+}
+
+model Recension {
+  id          String    @id @default(cuid())
+  scriptureId String
+  label       String
+  notes       String?
+  scripture   Scripture @relation(fields: [scriptureId], references: [id], onDelete: Cascade)
+  editions    Edition[]
+
+  @@unique([scriptureId, label])
+}
+
+model Edition {
+  id             String        @id @default(cuid())
+  recensionId    String
+  title          String
+  editor         String?
+  publisher      String?
+  publicationYear Int?
+  sourceUrl      String?
+  rightsNote     String?
+  recension      Recension     @relation(fields: [recensionId], references: [id], onDelete: Cascade)
+  passages       Passage[]
+  translations   Translation[]
+}
+
+model Translation {
+  id           String  @id @default(cuid())
+  editionId    String
+  title        String
+  languageCode String
+  translator   String?
+  rightsNote   String?
+  edition      Edition @relation(fields: [editionId], references: [id], onDelete: Cascade)
+}
+
+model Passage {
+  id             String          @id @default(cuid())
+  editionId      String
+  locator        String
+  originalText   String?
+  transliteration String?
+  rightsNote     String?
+  edition        Edition         @relation(fields: [editionId], references: [id], onDelete: Cascade)
+  evidence       ClaimEvidence[]
+
+  @@unique([editionId, locator])
+}
+
+model Deity {
+  id         String      @id @default(cuid())
+  slug       String      @unique
+  name       String
+  names      DeityName[]
+  claims     Claim[]
+}
+
+model DeityName {
+  id           String @id @default(cuid())
+  deityId      String
+  name         String
+  languageCode String
+  scriptCode   String?
+  kind         String
+  sourceNote   String?
+  deity        Deity  @relation(fields: [deityId], references: [id], onDelete: Cascade)
+}
+
+model Claim {
+  id          String         @id @default(cuid())
+  statement   String
+  claimType   String
+  tradition   String?
+  status      ResearchStatus @default(PROPOSED)
+  deityId     String?
+  deity       Deity?         @relation(fields: [deityId], references: [id])
+  evidence    ClaimEvidence[]
+}
+
+model ClaimEvidence {
+  claimId   String
+  passageId String
+  role      String
+  notes     String?
+  claim     Claim   @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  passage   Passage @relation(fields: [passageId], references: [id], onDelete: Cascade)
+
+  @@id([claimId, passageId])
+}
