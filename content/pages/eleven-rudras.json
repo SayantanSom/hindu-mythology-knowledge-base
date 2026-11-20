@@ -1,0 +1,25 @@
+{
+  "id": "topic-eleven-rudras",
+  "slug": "eleven-rudras",
+  "title": "The Eleven Rudras",
+  "kind": "group",
+  "overview": "The eleven Rudras are explained differently across Hindu textual traditions. This page currently documents only the Bṛhadāraṇyaka Upaniṣad account. Later textual lists must be added as separate, independently sourced accounts.",
+  "body": "## The question and the answer\n\nIn a discussion about the number of gods, Vidagdha Śākalya asks Yājñavalkya who the Rudras are. Rather than giving eleven personal names, Yājñavalkya identifies ten prāṇas (vital functions) and Ātman as the eleventh. His answer connects the group to embodied life.\n\n## What are the ten vital functions?\n\nThe accompanying English explanation interprets these ten as two groups of five. The five jñānendriyas are faculties of perception: hearing, touch, sight, taste and smell. The five karmendriyas are faculties of action: speech, grasping, movement, elimination and reproduction.\n\nThis division into ten individually described faculties comes from the explanatory translation. The Sanskrit verse itself refers to ten prāṇas; it does not name ten separate Rudra gods.\n\n## Why are they called Rudras?\n\nYājñavalkya explains the name through weeping. When these vital functions and the self depart from the mortal body, those left behind cry. The passage connects the designation Rudra with rodayanti, meaning that they cause people to weep.\n\nThe explanation links the eleven to life, death and loss. It belongs to this particular Upaniṣadic dialogue and should not be confused with genealogical or named lists from other scriptures.\n\n## Limits of this account\n\nBṛhadāraṇyaka Upaniṣad 3.9.4 gives a count, a constitution and a reason for the name. It does not provide eleven individual divine biographies. Later scriptural accounts will be added independently.",
+  "accounts": [
+    {
+      "id": "brhad-3-9-4",
+      "scripture": "Bṛhadāraṇyaka Upaniṣad",
+      "locator": "3.9.4",
+      "speaker": "Yājñavalkya",
+      "questioner": "Vidagdha Śākalya",
+      "explanation": "The question arises in a dialogue between Vidagdha Śākalya and Yājñavalkya about the number and nature of the gods. When Śākalya asks who the Rudras are, Yājñavalkya does not respond with eleven individual divine names. Instead, he directs attention to the living person: ten prāṇas, or vital functions, together with Ātman as the eleventh. This makes the passage more than a numerical classification; it connects the Rudras with embodied life. The English translation and explanation accompanying our working source interprets the ten as two sets of five: the jñānendriyas, faculties of perception, and the karmendriyas, faculties of action. The faculties of perception are conventionally described as hearing, touch, sight, taste and smell; the faculties of action as speech, grasping, movement, elimination and reproduction. These ten individual faculties are explanatory detail, not ten separately named Rudra deities listed in the Sanskrit verse. Why call them Rudras? Yājñavalkya explains the designation through the grief caused when they depart from the mortal body. Those left behind weep; the passage connects this with rodayanti, ‘they cause to weep.’ In this account, the name is thus explained through the experience of mortality and loss. This is the explanation given in Bṛhadāraṇyaka Upaniṣad 3.9.4; later scriptures may describe the eleven Rudras through other names, genealogies or narratives, which should be documented as separate accounts.",
+      "url": "https://upanishads.org.in/u/brihadaranyaka/p/3.9.4",
+      "status": "working-source"
+    }
+  ],
+  "links": [
+    "eight-vasus",
+    "twelve-adityas",
+    "yajnavalkya-sakalya-dialogue"
+  ]
+}
