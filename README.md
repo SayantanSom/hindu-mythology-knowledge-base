@@ -1,38 +1,38 @@
-# Hindu Mythology Knowledge Base
+# Hindu Mythology Encyclopedia
 
-A source-first, multilingual knowledge project mapping Hindu sacred literature and its connections to deities, stories, and philosophical concepts.
+A file-based, English-first encyclopedia of Hindu scriptures, people, deities and concepts.
 
-## Vision
+## Local development
 
-Build a trustworthy, navigable reference where statements about Hindu deities can be traced to identifiable passages in primary texts, with original-language evidence, edition-aware references, translation attribution, and explanations of differing traditions.
+Requires Node.js 22 or newer.
 
-## Agreed scope
+```powershell
+npm install
+npm run dev
+```
 
-- **Comprehensive catalogue (Option B):** Catalogue sacred texts across Sanskrit and regional languages, including recensions, commentaries, and living traditions where documentation exists.
-- **Focused research (Option A):** Research the four Vedas, principal Upanishads, Ramayana, Mahabharata, and 18 Mahapuranas in depth first.
-- **First deity classification:** The 33 deities (8 Vasus, 11 Rudras, 12 Adityas, Indra, Prajapati) as described in Brihadaranyaka Upanishad 3.9; document alternate enumerations and the 33-crore interpretation separately.
-- **Multilingual:** Sanskrit first; Tamil, Telugu, Kannada, Malayalam, Bengali, Marathi, Hindi, and other languages included in the catalogue from the outset.
-- **Editorial:** One lead researcher initially, with review and contributor attribution built in for the future.
+Open http://localhost:3000.
 
-## Principles
+No PostgreSQL, Docker, Prisma, migrations or environment database variables are required.
 
-1. Preserve textual variations: no fabricated universal canon.
-2. Distinguish primary texts, commentary, translation, and editorial synthesis.
-3. Cite an exact passage and identify the edition/recension whenever possible.
-4. Do not publish unverifiable claims as established facts.
-5. Treat source-attestation labels as research metadata, not rankings of religious legitimacy.
-6. Respect copyright and licenses for original editions, translations, and imagery.
+## Content
 
-## Current stage
+- `content/pages/*.json`: independent wiki pages with stable IDs, Markdown articles, source-specific accounts and related-page links.
+- `content/scriptures/*.json`: scripture overviews, chapter outlines and source links. Full English chapter readings will be added only after editorial verification.
+- `/topics`: browse wiki pages.
+- `/scriptures`: browse scripture pages.
+- `/editor`: local-development-only editor for wiki article bodies.
 
-**Phase 1: Research foundations.** No published deity list or verified scripture catalogue yet. Initial taxonomy entries are conceptual, not claims of complete classification.
+The original `/articles/33-vedic-deities` remains intact.
 
-See:
-- [Research plan](docs/research-plan.md)
-- [Classification approach](research/classifications/README.md)
-- [Evidence protocol](docs/evidence-protocol.md)
-- [Proposed data model](docs/data-model.md)
+## Editing
 
-## Proposed stack (not yet initialized)
+Use the local editor or edit JSON files directly. Changes made locally are stored in your working tree; commit them when you want them shared. Git records history. Never commit copyrighted translations without appropriate rights.
 
-Next.js + TypeScript, PostgreSQL, Prisma, Tailwind CSS. The public site and contributor workflow will follow after taxonomy and citation standards are reviewed.
+## Prior database
+
+The former Prisma/PostgreSQL code was removed from the application, **not** from your local database. No database reset or deletion is performed. Historical code remains available in Git history. If you made edits to PostgreSQL that were not exported to the checked-in JSON files, preserve your local database and recover/export them from the previous revision before deleting any Docker volumes.
+
+## Editorial approach
+
+Tell the stories and explain teachings in accessible English, link only genuine connections, distinguish different scriptural accounts, and provide exact source references. Sanskrit text is optional.
