@@ -36,6 +36,7 @@ model Scripture {
   status             ResearchStatus @default(PROPOSED)
   categories         ScriptureCategory[]
   recensions         Recension[]
+  researchNotes      ResearchNote[]
   createdAt          DateTime       @default(now())
   updatedAt          DateTime       @updatedAt
 
@@ -152,4 +153,23 @@ model ClaimEvidence {
   passage   Passage @relation(fields: [passageId], references: [id], onDelete: Cascade)
 
   @@id([claimId, passageId])
+}
+
+enum NoteStatus {
+  DRAFT
+  NEEDS_SOURCE
+  READY_FOR_REVIEW
+  REVIEWED
+}
+
+model ResearchNote {
+  id          String     @id @default(cuid())
+  scriptureId String
+  title       String
+  body        String
+  status      NoteStatus @default(DRAFT)
+  sourceRef   String?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+  scripture   Scripture  @relation(fields: [scriptureId], references: [id], onDelete: Cascade)
 }
