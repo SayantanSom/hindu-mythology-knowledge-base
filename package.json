@@ -1,23 +1,14 @@
 {
   "name": "hindu-mythology-knowledge-base",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "db:generate": "prisma generate",
-    "db:migrate": "prisma migrate dev",
-    "db:seed": "tsx prisma/seed.ts",
-    "db:studio": "prisma studio",
-    "typecheck": "tsc --noEmit",
-    "db:seed:brihadaranyaka": "tsx prisma/seed-brihadaranyaka-3-9.ts",
-    "db:seed:encyclopedia": "tsx prisma/seed-encyclopedia.ts",
-    "db:seed:rudra-sources": "tsx prisma/seed-rudra-sources.ts",
-    "wiki:export-db": "tsx scripts/export-db-pages.ts"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@prisma/client": "^6.0.0",
     "next": "^15.5.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
@@ -26,11 +17,6 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "prisma": "^6.0.0",
-    "tsx": "^4.19.0",
     "typescript": "^5.7.0"
-  },
-  "prisma": {
-    "seed": "tsx prisma/seed.ts"
   }
 }
