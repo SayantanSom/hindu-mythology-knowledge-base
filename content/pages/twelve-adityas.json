@@ -1,0 +1,21 @@
+{
+  "id": "topic-twelve-adityas",
+  "slug": "twelve-adityas",
+  "title": "The Twelve Ādityas",
+  "kind": "group",
+  "overview": "In this Upaniṣadic explanation, the twelve Ādityas correspond to the twelve months. The passage does not enumerate twelve individually named divine persons.",
+  "body": "## Who are the twelve Ādityas?\n\nVidagdha Śākalya asks Yājñavalkya to identify the twelve Ādityas. In this dialogue, the answer is the twelve months of the year. The passage does not enumerate twelve personal divine names.\n\n## Why the months?\n\nThe explanation connects the Ādityas to the passing year. As the months proceed, time takes away the lives of beings. The twelve are therefore explained through the passage of time and its effects on mortal life.\n\n## How to read this account\n\nThis is the particular explanation of Bṛhadāraṇyaka Upaniṣad 3.9.5. Other scriptures may give individually named Ādityas. We will preserve those lists as separate source-specific accounts rather than replace this explanation.",
+  "accounts": [
+    {
+      "id": "brhad-3-9-5",
+      "scripture": "Bṛhadāraṇyaka Upaniṣad",
+      "locator": "3.9.5",
+      "speaker": "Yājñavalkya",
+      "questioner": "Vidagdha Śākalya",
+      "explanation": "Yājñavalkya connects the twelve Ādityas with the months, explaining their name through their movement and taking away of the lives of beings as time passes. Lists of named Ādityas in other texts must be treated as distinct accounts.",
+      "url": "https://upanishads.org.in/u/brihadaranyaka/p/3.9.5",
+      "status": "working-source"
+    }
+  ],
+  "links": []
+}
