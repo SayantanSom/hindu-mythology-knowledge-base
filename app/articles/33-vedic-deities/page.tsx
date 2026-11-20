@@ -19,7 +19,7 @@ export default function Vedic33Page(){
    <p><strong>Vidagdha Śākalya</strong> asks the questions. <strong>Yājñavalkya</strong> answers them. Their exchange belongs to the wider debate narrative involving King Janaka of Videha; that broader setting is introduced earlier in chapter 3. It does not establish either speaker as the author or compiler of the entire Upaniṣad.</p>
    <p><strong>Authorship and transmission:</strong> The text is associated with the Śukla Yajurveda. The specific Sanskrit base edition and recension used by our preferred website are still unverified. We will document traditional transmission and historical editorial history separately rather than guess an individual compiler.</p>
   </section>
-  <section className="panel"><h2>How the thirty-three are classified</h2>
+  <section className="panel"><h2>Explore connected topics</h2><p>Read each group as its own subject, with separate accounts for each scripture.</p><div className="actions"><Link className="tag" href="/topics/eight-vasus">Eight Vasus</Link><Link className="tag" href="/topics/eleven-rudras">Eleven Rudras</Link><Link className="tag" href="/topics/twelve-adityas">Twelve Ādityas</Link><Link className="tag" href="/topics/yajnavalkya-sakalya-dialogue">The dialogue</Link></div></section><section className="panel"><h2>How the thirty-three are classified</h2>
    <div className="grid">{groups.map(g=><div key={g.name} style={{background:"#f1f6f2",borderRadius:10,padding:18}}><div style={{fontSize:30,fontWeight:700}}>{g.count}</div><h3 style={{margin:"0 0 8px"}}>{g.name==="Other"?"Indra and Prajāpati":g.name}</h3><p style={{margin:0}}>{g.summary}</p></div>)}</div>
   </section>
   {groups.map(g=><section className="panel" key={g.name} id={g.name.toLowerCase()}>
