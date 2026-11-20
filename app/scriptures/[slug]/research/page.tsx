@@ -34,7 +34,7 @@ export default async function Research({params}:Props) {
       </form>}
     </section>
     <section className="panel"><h2>3. Passages ({passages.length})</h2>
-      {passages.map(p=><p key={p.id}><strong>{p.locator}</strong> <span className="muted">— {p.editionTitle}</span>{p.originalText && <div lang="sa">{p.originalText}</div>}</p>)}
+      {passages.map(p=><div key={p.id}><strong>{p.locator}</strong> <span className="muted">— {p.editionTitle}</span>{p.originalText && <div lang="sa" style={{whiteSpace:"pre-wrap"}}>{p.originalText}</div>}</div>)}
       {editions.length===0 ? <p className="muted">Add an edition before recording passages.</p> : <form action={bind(addPassage)}>
         <div className="field"><label>Edition *<select name="editionId" required>{editions.map(e=><option key={e.id} value={e.id}>{e.title} ({e.recensionLabel})</option>)}</select></label></div>
         <div className="field"><label>Exact passage locator *<input name="locator" required placeholder="Chapter / section / verse in this edition"/></label></div>
