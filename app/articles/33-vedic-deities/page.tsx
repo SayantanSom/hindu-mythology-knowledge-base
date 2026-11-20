@@ -25,6 +25,14 @@ export default function Vedic33Page(){
   {groups.map(g=><section className="panel" key={g.name} id={g.name.toLowerCase()}>
     <h2>{g.name==="Other"?"Indra and Prajāpati":`The ${g.count} ${g.name}`}</h2>
     <p className="muted">{g.summary} Source: Bṛhadāraṇyaka Upaniṣad {g.name==="Vasus"?"3.9.3":g.name==="Rudras"?"3.9.4":g.name==="Ādityas"?"3.9.5":"3.9.6"}.</p>
+    {g.name==="Rudras" && <div style={{background:"#f1f6f2",borderRadius:10,padding:18,marginBottom:18}}>
+      <h3>What makes up the eleven Rudras?</h3>
+      <p>Yājñavalkya identifies the eleven as <strong>ten prāṇas (vital functions) and Ātman (the self) as the eleventh</strong>. In the English translation used by our preferred source, the ten are explained as the five <em>jñānendriyas</em> (faculties of perception) and five <em>karmendriyas</em> (faculties of action).</p>
+      <ul><li><strong>Five faculties of perception:</strong> hearing, touch, sight, taste and smell.</li><li><strong>Five faculties of action:</strong> speech, grasping, locomotion, elimination and reproduction.</li><li><strong>Eleventh:</strong> Ātman, the self.</li></ul>
+      <h3>Why are they called Rudras?</h3>
+      <p>The passage explains the name through weeping: when these depart from the mortal body, people weep. It connects the name Rudra with <em>rodayanti</em>, “they cause to weep.” This is the explanation given in this particular dialogue, not an assertion that all traditions define Rudra in the same way.</p>
+      <p className="muted">Source distinction: the Sanskrit refers to ten prāṇas and Ātman; the division into five perceptive and five active faculties is supplied by the accompanying English translation/explanation. <a href="https://upanishads.org.in/u/brihadaranyaka/p/3.9.4" target="_blank" rel="noopener noreferrer">Read 3.9.4 ↗</a></p>
+    </div>}
     <div className="grid">{deitySlots.filter(x=>x.group===g.name).map(x=><div key={x.id} style={{border:"1px solid #dce5df",borderRadius:10,padding:15}}>
       <h3 style={{margin:"0 0 5px",fontSize:16}}>{x.label}</h3>
       <span className="tag">{x.identification}</span>
