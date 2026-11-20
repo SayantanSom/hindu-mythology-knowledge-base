@@ -1,8 +1,7 @@
 import Link from "next/link";
 export default function Home(){
- return <div>
- <div className="topline"><div><p className="muted">Hindu Mythology Knowledge Base</p><h1>Explore mythology through its sources</h1><p>Clear explanations of deities, traditions and scriptural discussions, with references you can follow.</p></div></div>
- <section className="panel"><p className="muted">Featured research article</p><h2><Link href="/articles/33-vedic-deities">The Classification of the 33 Vedic Deities</Link></h2><p>Discover the eight Vasus, eleven Rudras, twelve Ādityas, Indra and Prajāpati as explained in Bṛhadāraṇyaka Upaniṣad 3.9.</p><Link className="button" href="/articles/33-vedic-deities">Read the article</Link></section>
- <section className="panel"><h2>Scripture catalogue</h2><p>Browse the research registry and its source references.</p><Link href="/scriptures">Open scripture catalogue</Link></section>
- </div>;
+ return <div><div className="topline"><div><p className="muted">Hindu Mythology Encyclopedia</p><h1>Explore mythology through its stories and scriptures</h1><p>Read accessible English explanations, explore linked people and deities, and follow references to their sources.</p></div></div>
+ <section className="panel"><h2><Link href="/topics">People, deities and concepts</Link></h2><p>Explore interconnected encyclopedia pages, including the Rudras, Vasus and Ādityas.</p></section>
+ <section className="panel"><h2><Link href="/scriptures">Scriptures</Link></h2><p>Browse scripture introductions and chapter-wise English reading guides.</p><Link href="/scriptures/brihadaranyaka-upanishad">Explore the Bṛhadāraṇyaka Upaniṣad</Link></section>
+ <section className="panel"><h2><Link href="/articles/33-vedic-deities">The 33 Vedic Deities</Link></h2><p>Our original overview article remains available.</p></section></div>;
 }
