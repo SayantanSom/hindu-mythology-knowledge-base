@@ -9,7 +9,19 @@ export default async function TopicPage({params}:{params:Promise<{slug:string}>}
  <h1>{topic.title}</h1><section className="panel"><h2>Overview</h2><p>{topic.overview}</p></section>
  <section className="panel"><h2>Accounts by scripture</h2><p className="muted">Each account is kept separate so later traditions can be compared without replacing earlier explanations.</p>
  {topic.accounts.map(a=><div key={a.id} style={{borderTop:"1px solid #dce5df",padding:"20px 0"}}>
- <h3>{a.scripture} · {a.locator}</h3><p><strong>{a.summary}</strong></p><p>{a.explanation}</p>
+ <h3>{a.scripture} · {a.locator}</h3><p><strong>{a.summary}</strong></p>
+ {topic.slug==="eleven-rudras" ? <>
+ <h4>The question and the answer</h4>
+ <p>In a discussion about the number of gods, Vidagdha Śākalya asks Yājñavalkya who the Rudras are. Instead of supplying eleven individual divine names, Yājñavalkya points to the living person: ten <em>prāṇas</em>, or vital functions, and <em>Ātman</em> as the eleventh.</p>
+ <h4>What are the ten?</h4>
+ <p>The English explanation accompanying our working source identifies the ten with two sets of five faculties. The <em>jñānendriyas</em> are the faculties of perception—hearing, touch, sight, taste and smell. The <em>karmendriyas</em> are the faculties of action—speech, grasping, movement, elimination and reproduction.</p>
+ <p><strong>Source distinction:</strong> The Sanskrit verse speaks of ten prāṇas and Ātman. It does not enumerate these ten faculties individually. Their division into two groups of five belongs to the accompanying explanation.</p>
+ <h4>Why are they called Rudras?</h4>
+ <p>Yājñavalkya's explanation turns from the living person to the experience of death. When these vital functions and the self depart from the mortal body, their departure causes people to weep. The passage connects this act of causing tears—<em>rodayanti</em>—with the name <em>Rudra</em>.</p>
+ <p>The name is therefore explained here through the sorrow of separation and mortality. This is a particular Upaniṣadic explanation, not a claim that every scripture defines the Rudras in the same way.</p>
+ <h4>What this passage does—and does not—tell us</h4>
+ <p>It gives a count, a constitution and a reason for the name. It does not give eleven personal deity names. When we research Purāṇic and epic lists, we will present those as separate scriptural accounts rather than silently replacing this one.</p>
+ </> : <p>{a.explanation}</p>}
  <p><strong>Speaker:</strong> {a.speaker} · <strong>Questioner:</strong> {a.questioner}</p>
  <p className="muted">Working source · Sanskrit base edition and recension unverified</p>
  <a href={a.url} target="_blank" rel="noopener noreferrer">Read the source passage ↗</a>
