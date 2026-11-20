@@ -1,16 +1,10 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
-import { db } from "../../../lib/db";
-export const dynamic = "force-dynamic";
-type Props = { params: Promise<{ slug: string }> };
-export default async function ScriptureDetail({ params }: Props) {
-  const { slug } = await params;
-  const s = await db.scripture.findUnique({ where: { slug }, include: { categories: { include: { category: true } }, recensions: true } });
-  if (!s) notFound();
-  return <>
-    <div className="topline"><div><Link href="/scriptures">← Catalogue</Link><h1>{s.title}</h1><p className="muted">{s.transliteration} · {s.languageCode} · {s.status.replaceAll("_"," ")}</p></div><div className="actions"><Link className="button" href={"/scriptures/"+s.slug+"/research"}>Research & evidence</Link><Link className="button secondary" href={"/scriptures/"+s.slug+"/edit"}>Edit metadata</Link></div></div>
-    <section className="panel"><h2>Bibliographic identity</h2><p><strong>Original title:</strong> {s.titleOriginal || "Not recorded"}</p><p><strong>Script:</strong> {s.scriptCode || "Not recorded"}</p><p><strong>Traditional attribution:</strong> {s.traditionalAuthor || "Not recorded"}</p><p><strong>Summary:</strong> {s.summary || "Not recorded"}</p><p><strong>Historical notes:</strong> {s.historicalNotes || "Not recorded"}</p></section>
-    <section className="panel"><h2>Classifications</h2>{s.categories.length ? s.categories.map(c=><span key={c.categoryId} className="tag">{c.category.name}</span>) : <p className="muted">No classifications assigned.</p>}</section>
-    <section className="panel"><h2>Recensions and evidence</h2><p className="muted">{s.recensions.length} recensions recorded. Manage edition-aware passages, translations, research notes and source-linked claims from the Research & evidence page.</p></section>
-  </>;
+import {notFound} from "next/navigation";
+import {getScripture} from "../../../lib/scriptures";
+import {getWikiPage} from "../../../lib/wiki";
+export default async function ScriptureDetail({params}:{params:Promise<{slug:string}>}){
+ const {slug}=await params;const scripture=await getScripture(slug);if(!scripture)notFound();
+ return <article><p><Link href="/scriptures">← All scriptures</Link></p><h1>{scripture.title}</h1><p className="muted">{scripture.subtitle}</p><p>{scripture.overview}</p>
+ <section className="panel"><h2>Chapters</h2>{await Promise.all(scripture.chapters.map(async chapter=><section key={chapter.number}><h3>Chapter {chapter.number}</h3>{chapter.sections.length?await Promise.all(chapter.sections.map(async section=><div key={section.number}><h4>Section {chapter.number}.{section.number} — {section.title}</h4><p>{section.description}</p><p className="muted">Reference: {section.reference}</p><div className="actions">{(await Promise.all(section.links.map(getWikiPage))).filter((x):x is NonNullable<typeof x>=>x!==null).map(p=><Link className="tag" key={p.id} href={`/topics/${p.slug}`}>{p.title}</Link>)}</div><p><a href={section.sourceUrl} target="_blank" rel="noopener noreferrer">Read cited passage ↗</a></p></div>)):null}{!chapter.sections.length&&<p className="muted">English reading content not yet prepared.</p>}</section>))}</section>
+ <section className="panel"><h2>References</h2>{scripture.references.map(r=><p key={r.url}><a href={r.url} target="_blank" rel="noopener noreferrer">{r.label} ↗</a></p>)}</section></article>;
 }
