@@ -1,0 +1,14 @@
+CREATE TYPE "ArticleState" AS ENUM ('DRAFT', 'IN_REVIEW', 'PUBLISHED');
+CREATE TABLE "EncyclopediaTopic" ("id" TEXT NOT NULL, "slug" TEXT NOT NULL, "title" TEXT NOT NULL, "kind" TEXT NOT NULL, "overview" TEXT NOT NULL DEFAULT '', "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" TIMESTAMP(3) NOT NULL, CONSTRAINT "EncyclopediaTopic_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "EncyclopediaTopic_slug_key" ON "EncyclopediaTopic"("slug");
+CREATE TABLE "EncyclopediaArticle" ("id" TEXT NOT NULL, "topicId" TEXT NOT NULL, "body" TEXT NOT NULL DEFAULT '', "state" "ArticleState" NOT NULL DEFAULT 'DRAFT', "updatedAt" TIMESTAMP(3) NOT NULL, CONSTRAINT "EncyclopediaArticle_pkey" PRIMARY KEY ("id"));
+CREATE UNIQUE INDEX "EncyclopediaArticle_topicId_key" ON "EncyclopediaArticle"("topicId");
+CREATE TABLE "ArticleRevision" ("id" TEXT NOT NULL, "articleId" TEXT NOT NULL, "body" TEXT NOT NULL, "state" "ArticleState" NOT NULL, "note" TEXT, "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, CONSTRAINT "ArticleRevision_pkey" PRIMARY KEY ("id"));
+CREATE TABLE "EncyclopediaAccount" ("id" TEXT NOT NULL, "topicId" TEXT NOT NULL, "scriptureId" TEXT, "locator" TEXT NOT NULL, "speaker" TEXT, "questioner" TEXT, "narrator" TEXT, "explanation" TEXT NOT NULL, "sourceUrl" TEXT, "sourceStatus" TEXT NOT NULL DEFAULT 'WORKING', "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" TIMESTAMP(3) NOT NULL, CONSTRAINT "EncyclopediaAccount_pkey" PRIMARY KEY ("id"));
+CREATE TABLE "TopicConnection" ("fromId" TEXT NOT NULL, "toId" TEXT NOT NULL, "relation" TEXT NOT NULL DEFAULT 'RELATED', CONSTRAINT "TopicConnection_pkey" PRIMARY KEY ("fromId","toId","relation"));
+ALTER TABLE "EncyclopediaArticle" ADD CONSTRAINT "EncyclopediaArticle_topicId_fkey" FOREIGN KEY ("topicId") REFERENCES "EncyclopediaTopic"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "ArticleRevision" ADD CONSTRAINT "ArticleRevision_articleId_fkey" FOREIGN KEY ("articleId") REFERENCES "EncyclopediaArticle"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "EncyclopediaAccount" ADD CONSTRAINT "EncyclopediaAccount_topicId_fkey" FOREIGN KEY ("topicId") REFERENCES "EncyclopediaTopic"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "EncyclopediaAccount" ADD CONSTRAINT "EncyclopediaAccount_scriptureId_fkey" FOREIGN KEY ("scriptureId") REFERENCES "Scripture"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "TopicConnection" ADD CONSTRAINT "TopicConnection_fromId_fkey" FOREIGN KEY ("fromId") REFERENCES "EncyclopediaTopic"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "TopicConnection" ADD CONSTRAINT "TopicConnection_toId_fkey" FOREIGN KEY ("toId") REFERENCES "EncyclopediaTopic"("id") ON DELETE CASCADE ON UPDATE CASCADE;
