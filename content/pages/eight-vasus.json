@@ -1,0 +1,21 @@
+{
+  "id": "topic-eight-vasus",
+  "slug": "eight-vasus",
+  "title": "The Eight Vasus",
+  "kind": "group",
+  "overview": "The eight Vasus are identified here as cosmic realities. Other traditions may supply different personal names; those accounts are not yet incorporated.",
+  "body": "## Who are the eight Vasus?\n\nAfter naming the groups that make up the thirty-three gods, Vidagdha Śākalya asks Yājñavalkya who the Vasus are. Yājñavalkya answers with eight cosmic realities rather than eight individual mythological biographies.\n\n## The eight named in the passage\n\n1. **Agni (fire):** Fire, one of the realities named in the enumeration.\n2. **Pṛthivī (earth):** The terrestrial world.\n3. **Vāyu (air or wind):** Moving air, distinct from the intermediate region.\n4. **Antarikṣa (mid-space):** The intermediate region between earth and heaven.\n5. **Āditya (sun):** The sun as a Vasu; this does not collapse the separate group of twelve Ādityas into this one entry.\n6. **Dyauḥ (heaven):** The celestial realm.\n7. **Candramas (moon):** The moon.\n8. **Nakṣatrāṇi (stars):** The stars collectively, not a list of individual stars.\n\n## Why are they called Vasus?\n\nYājñavalkya explains that everything dwelling in the world rests or is established in these eight. The Sanskrit explanation connects the name Vasus with the idea that the world's contents are lodged in them.\n\nThe enumeration therefore draws attention to the cosmic setting of life: earth and heaven, the intermediate region, air and fire, sun, moon and stars. This is an explanation of their grouping in this passage, not an assertion that every tradition uses the same list.\n\n## What remains to be researched?\n\nThe passage does not supply genealogies, consorts or separate stories for the eight. Other scriptural enumerations should be documented as their own accounts with precise citations.",
+  "accounts": [
+    {
+      "id": "brhad-3-9-3",
+      "scripture": "Bṛhadāraṇyaka Upaniṣad",
+      "locator": "3.9.3",
+      "speaker": "Yājñavalkya",
+      "questioner": "Vidagdha Śākalya",
+      "explanation": "Śākalya asks Yājñavalkya who the Vasus are. Yājñavalkya identifies fire (Agni), earth (Pṛthivī), air (Vāyu), the intermediate region (Antarikṣa), sun (Āditya), heaven (Dyauḥ), moon (Candramas), and stars (Nakṣatrāṇi). He then explains the name: everything that dwells in the world rests or is established in these eight cosmic realities. The passage provides a cosmological enumeration and its rationale; it does not give biographies, genealogies, or alternative lists of named Vasu deities from later texts.",
+      "url": "https://upanishads.org.in/u/brihadaranyaka/p/3.9.3",
+      "status": "working-source"
+    }
+  ],
+  "links": []
+}
