@@ -1,0 +1,23 @@
+{
+  "id": "topic-yajnavalkya-sakalya-dialogue",
+  "slug": "yajnavalkya-sakalya-dialogue",
+  "title": "Yājñavalkya and Vidagdha Śākalya",
+  "kind": "dialogue",
+  "overview": "A discussion about the number and nature of the gods in the broader debate setting associated with King Janaka of Videha.",
+  "body": "## The setting\n\nIn the wider debate narrative of Bṛhadāraṇyaka Upaniṣad chapter 3, learned participants question Yājñavalkya in a setting associated with King Janaka of Videha. The immediate exchange in 3.9 is between Vidagdha Śākalya, the questioner, and Yājñavalkya, who answers.\n\n## How many gods?\n\nŚākalya repeatedly asks how many gods there are. Yājñavalkya gives successively smaller enumerations. One count is thirty-three: eight Vasus, eleven Rudras, twelve Ādityas, Indra and Prajāpati.\n\n## Why this dialogue matters\n\nThe discussion does not stop at a number. Śākalya asks who these groups are, and Yājñavalkya explains them through the cosmos, vital functions, the months, thunder and sacrifice.\n\n## Speaker is not author\n\nYājñavalkya's role as speaker does not prove he composed or compiled the entire Upaniṣad. Authorship, recension and textual transmission require separate evidence.",
+  "accounts": [
+    {
+      "id": "brhad-3-9-1",
+      "scripture": "Bṛhadāraṇyaka Upaniṣad",
+      "locator": "3.9.1–3.9.6",
+      "speaker": "Yājñavalkya",
+      "questioner": "Vidagdha Śākalya",
+      "explanation": "Śākalya questions Yājñavalkya. The answers include the count of thirty-three and subsequent explanations of Vasus, Rudras, Ādityas, Indra and Prajāpati. The speakers' roles do not establish authorship or compilation of the Upaniṣad.",
+      "url": "https://upanishads.org.in/u/brihadaranyaka/p/3.9.1",
+      "status": "working-source"
+    }
+  ],
+  "links": [
+    "eleven-rudras"
+  ]
+}
