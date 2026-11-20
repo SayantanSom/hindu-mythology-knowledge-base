@@ -33,12 +33,12 @@ export default function Vedic33Page(){
       <p>The passage explains the name through weeping: when these depart from the mortal body, people weep. It connects the name Rudra with <em>rodayanti</em>, “they cause to weep.” This is the explanation given in this particular dialogue, not an assertion that all traditions define Rudra in the same way.</p>
       <p className="muted">Source distinction: the Sanskrit refers to ten prāṇas and Ātman; the division into five perceptive and five active faculties is supplied by the accompanying English translation/explanation. <a href="https://upanishads.org.in/u/brihadaranyaka/p/3.9.4" target="_blank" rel="noopener noreferrer">Read 3.9.4 ↗</a></p>
     </div>}
-    <div className="grid">{deitySlots.filter(x=>x.group===g.name).map(x=><div key={x.id} style={{border:"1px solid #dce5df",borderRadius:10,padding:15}}>
+    {g.name!=="Rudras" && <div className="grid">{deitySlots.filter(x=>x.group===g.name).map(x=><div key={x.id} style={{border:"1px solid #dce5df",borderRadius:10,padding:15}}>
       <h3 style={{margin:"0 0 5px",fontSize:16}}>{x.label}</h3>
       <span className="tag">{x.identification}</span>
       <p>{x.explanation}</p>
       <a href={`https://upanishads.org.in/u/brihadaranyaka/p/${x.passage}`} target="_blank" rel="noopener noreferrer">Bṛhadāraṇyaka {x.passage} ↗</a>
-    </div>)}</div>
+    </div>)}</div>}
   </section>)}
   <section className="panel"><h2>What can we conclude—and what remains open?</h2>
     <p><strong>Supported by this passage:</strong> the thirty-three are arranged into the specified groups; the Vasus are individually enumerated as cosmic realities; the Rudras and Ādityas are explained through the person and the year; Indra and Prajāpati receive contextual identifications.</p>
