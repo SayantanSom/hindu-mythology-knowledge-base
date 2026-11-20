@@ -37,6 +37,7 @@ model Scripture {
   categories         ScriptureCategory[]
   recensions         Recension[]
   researchNotes      ResearchNote[]
+  encyclopediaAccounts EncyclopediaAccount[]
   createdAt          DateTime       @default(now())
   updatedAt          DateTime       @updatedAt
 
@@ -172,4 +173,71 @@ model ResearchNote {
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   scripture   Scripture  @relation(fields: [scriptureId], references: [id], onDelete: Cascade)
+}
+
+enum ArticleState {
+  DRAFT
+  IN_REVIEW
+  PUBLISHED
+}
+
+model EncyclopediaTopic {
+  id          String @id @default(cuid())
+  slug        String @unique
+  title       String
+  kind        String
+  overview    String @default("")
+  articles    EncyclopediaArticle[]
+  accounts    EncyclopediaAccount[]
+  linksFrom   TopicConnection[] @relation("FromTopic")
+  linksTo     TopicConnection[] @relation("ToTopic")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model EncyclopediaArticle {
+  id        String @id @default(cuid())
+  topicId   String
+  topic     EncyclopediaTopic @relation(fields:[topicId],references:[id],onDelete:Cascade)
+  body      String @default("")
+  state     ArticleState @default(DRAFT)
+  revisions ArticleRevision[]
+  updatedAt DateTime @updatedAt
+  @@unique([topicId])
+}
+
+model ArticleRevision {
+  id        String @id @default(cuid())
+  articleId String
+  article   EncyclopediaArticle @relation(fields:[articleId],references:[id],onDelete:Cascade)
+  body      String
+  state     ArticleState
+  note      String?
+  createdAt DateTime @default(now())
+}
+
+model EncyclopediaAccount {
+  id          String @id @default(cuid())
+  topicId     String
+  topic       EncyclopediaTopic @relation(fields:[topicId],references:[id],onDelete:Cascade)
+  scriptureId String?
+  scripture   Scripture? @relation(fields:[scriptureId],references:[id],onDelete:SetNull)
+  locator     String
+  speaker     String?
+  questioner  String?
+  narrator    String?
+  explanation String
+  sourceUrl   String?
+  sourceStatus String @default("WORKING")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model TopicConnection {
+  fromId String
+  toId   String
+  from   EncyclopediaTopic @relation("FromTopic",fields:[fromId],references:[id],onDelete:Cascade)
+  to     EncyclopediaTopic @relation("ToTopic",fields:[toId],references:[id],onDelete:Cascade)
+  relation String @default("RELATED")
+  @@id([fromId,toId,relation])
 }
