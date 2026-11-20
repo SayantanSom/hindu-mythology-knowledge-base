@@ -1,39 +1,27 @@
-# Local-first development setup
+# Local setup — file-based wiki
 
-## Prerequisites
+## Requirements
 
 - Git
-- Docker Desktop (or Docker Engine with Compose)
-- Node.js 20+ and npm
+- Node.js 22 or newer
+- npm
 
-## Start the database
+## Run
 
-1. Clone the private GitHub repository and open its directory.
-2. Copy `.env.example` to `.env`.
-3. Run `docker compose up -d`.
-4. Run `docker compose ps` and wait for the PostgreSQL container to become healthy.
-5. Run `npm install`.
-6. Run `npm run db:generate`.
-7. Run `npm run db:migrate -- --name initial_catalogue`.
-8. Run `npm run db:seed`.
-9. Run `npm run db:studio` to browse the seeded records locally.
+```powershell
+git pull origin main
+npm install
+npm run dev
+```
 
-The example password is **development-only**. Change both the Compose `POSTGRES_PASSWORD` setting and the password in your local `.env` before storing sensitive data. The PostgreSQL port binds to localhost only.
+Open http://localhost:3000.
 
-## Stop and restart
+There is **no database, Prisma client, Docker Compose service, migration, or seed command** in the active application. Content is stored in `content/pages/*.json` and `content/scriptures/*.json`.
 
-- Stop without deleting data: `docker compose down`
-- Restart: `docker compose up -d`
-- **Do not** use `docker compose down -v` unless you intentionally want to delete the database volume.
+Edit wiki articles at http://localhost:3000/editor in local development or modify JSON files directly. Changes made in the browser write to the local files, not automatically to GitHub; commit them to share.
 
-## Backups and migration
+## Preserving old local PostgreSQL data
 
-- Backup: `bash scripts/backup-db.sh`
-- Restore into a compatible local database: `bash scripts/restore-db.sh backups/<filename>.dump`
-- The backup scripts require Bash and Docker Compose. On Windows, use Git Bash or WSL.
-- The `backups/` directory is ignored by Git. Store backup copies securely elsewhere.
-- To move hosting later, provision a PostgreSQL instance, transfer data using pg_dump/pg_restore, configure `DATABASE_URL`, run verified migrations, and deploy the same application code. Test restore before relying on backups.
+Removing the database code from Git does **not** delete your existing local PostgreSQL volume. Do not delete it if you have unexported edits you want to keep. The previous export scripts and schema can be recovered from Git history if necessary. The initial seeded encyclopedia articles were committed as JSON files, but later local DB-only edits were not automatically imported.
 
-## Current implementation status
-
-This repository currently includes a Prisma database schema and sample catalogue seed data. It does **not** yet contain a Next.js web application or admin UI. Docker/Prisma commands have not been executed on your machine from this chat; local installation and validation remain necessary.
+The earlier research-dashboard and database-design documents are historical planning material, not current setup instructions.
