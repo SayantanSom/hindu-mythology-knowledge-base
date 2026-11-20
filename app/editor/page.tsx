@@ -1,8 +1,8 @@
 import Link from "next/link";
-import {db} from "../../lib/db";
+import {listWikiPages} from "../../lib/wiki";
 export const dynamic="force-dynamic";
 export default async function EditorIndex(){
- if(process.env.NODE_ENV!=="development")return <p>Editor disabled until authentication is configured.</p>;
- const topics=await db.encyclopediaTopic.findMany({include:{articles:true},orderBy:{title:"asc"}});
- return <div><h1>Encyclopedia editor</h1><p>Article updates are saved directly to your local PostgreSQL database.</p><div className="grid">{topics.map(t=><section className="panel" key={t.id}><h2>{t.title}</h2><p className="muted">{t.articles[0]?.state||"No article"}</p><Link href={`/editor/${t.slug}`}>Edit article</Link></section>)}</div></div>;
+ if(process.env.NODE_ENV!=="development")return <p>Editor disabled outside local development.</p>;
+ const pages=await listWikiPages();
+ return <main><h1>Edit wiki pages</h1><p>Changes are saved to local JSON files in <code>content/pages</code>. No database required.</p><div className="grid">{pages.map(p=><section className="panel" key={p.id}><h2>{p.title}</h2><Link href={`/editor/${p.slug}`}>Edit page</Link></section>)}</div></main>;
 }
