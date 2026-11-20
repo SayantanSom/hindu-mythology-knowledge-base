@@ -12,7 +12,8 @@
     "db:studio": "prisma studio",
     "typecheck": "tsc --noEmit",
     "db:seed:brihadaranyaka": "tsx prisma/seed-brihadaranyaka-3-9.ts",
-    "db:seed:encyclopedia": "tsx prisma/seed-encyclopedia.ts"
+    "db:seed:encyclopedia": "tsx prisma/seed-encyclopedia.ts",
+    "db:seed:rudra-sources": "tsx prisma/seed-rudra-sources.ts"
   },
   "dependencies": {
     "@prisma/client": "^6.0.0",
