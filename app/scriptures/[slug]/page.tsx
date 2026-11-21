@@ -1,7 +1,8 @@
 import Link from "next/link";
 import {notFound} from "next/navigation";
-import {getScripture} from "../../../lib/scriptures";
+import {getScripture,listScriptures} from "../../../lib/scriptures";
 import {getWikiPage} from "../../../lib/wiki";
+export async function generateStaticParams(){return (await listScriptures()).map(s=>({slug:s.slug}));}
 export default async function ScriptureDetail({params}:{params:Promise<{slug:string}>}){
  const {slug}=await params;const scripture=await getScripture(slug);if(!scripture)notFound();
  return <article><p><Link href="/scriptures">← All scriptures</Link></p><h1>{scripture.title}</h1><p className="muted">{scripture.subtitle}</p><p>{scripture.overview}</p>
