@@ -1,7 +1,3 @@
-import type {Metadata} from "next";
-import Link from "next/link";
-import "./globals.css";
-export const metadata:Metadata={title:"Hindu Mythology | Encyclopedia",description:"A readable, scripture-referenced Hindu mythology encyclopedia"};
-export default function RootLayout({children}:Readonly<{children:React.ReactNode}>){
- return <html lang="en"><body><header className="site-header"><div className="container header-inner"><Link href="/" className="brand">Hindu Mythology <span>Encyclopedia</span></Link><nav><Link href="/topics">Explore topics</Link><Link href="/articles/33-vedic-deities">33 Vedic Deities</Link><Link href="/scriptures">Scriptures</Link></nav></div></header><main className="container">{children}</main><footer className="container footer">English explanations · Traceable scriptural references</footer></body></html>;
-}
+import type {Metadata} from "next";import Link from "next/link";import "./globals.css";
+export const metadata:Metadata={title:"Bharat Vidya | Hindu Mythology Encyclopedia",description:"An interconnected, scripture-referenced encyclopedia of Hindu traditions"};
+export default function RootLayout({children}:Readonly<{children:React.ReactNode}>){return <html lang="en"><body><header className="site-header"><div className="container header-inner"><Link href="/" className="brand">Bharat Vidya<span>An encyclopedia of Hindu traditions</span></Link><nav aria-label="Main navigation"><Link href="/topics">Deities & concepts</Link><Link href="/scriptures">Scriptures</Link><Link href="/articles/33-vedic-deities">33 Devas</Link></nav></div></header><main className="container">{children}</main><footer className="container footer">Bharat Vidya · English explanations · Scripture-first references · Distinct traditions, carefully attributed</footer></body></html>}
