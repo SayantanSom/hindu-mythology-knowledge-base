@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {listWikiPages} from "../../lib/wiki";
-export const dynamic="force-dynamic";
 export const metadata={title:"Encyclopedia Topics | Hindu Mythology"};
 export default async function TopicsPage(){
  const pages=await listWikiPages();
