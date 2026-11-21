@@ -1,6 +1,8 @@
 import type {ReactNode} from "react";
+import Link from "next/link";
 function inline(text:string):ReactNode[]{
- return text.split(/(\*\*[^*]+\*\*|\*[^*]+\*)/g).map((piece,i)=>{
+ return text.split(/(\[\[[a-z0-9-]+\|[^\]]+\]\]|\*\*[^*]+\*\*|\*[^*]+\*)/g).map((piece,i)=>{
+  if(piece.startsWith("[[")&&piece.endsWith("]]")){const [slug,label]=piece.slice(2,-2).split("|");return <Link key={i} href={slug==="brihadaranyaka-upanishad"?"/scriptures/"+slug:"/topics/"+slug}>{label}</Link>;}
   if(piece.startsWith("**")&&piece.endsWith("**"))return <strong key={i}>{piece.slice(2,-2)}</strong>;
   if(piece.startsWith("*")&&piece.endsWith("*"))return <em key={i}>{piece.slice(1,-1)}</em>;
   return piece;
