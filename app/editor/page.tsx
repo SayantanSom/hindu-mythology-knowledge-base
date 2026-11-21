@@ -1,8 +1,2 @@
 import Link from "next/link";
-import {listWikiPages} from "../../lib/wiki";
-export const dynamic="force-dynamic";
-export default async function EditorIndex(){
- if(process.env.NODE_ENV!=="development")return <p>Editor disabled outside local development.</p>;
- const pages=await listWikiPages();
- return <main><h1>Edit wiki pages</h1><p>Changes are saved to local JSON files in <code>content/pages</code>. No database required.</p><div className="grid">{pages.map(p=><section className="panel" key={p.id}><h2>{p.title}</h2><Link href={`/editor/${p.slug}`}>Edit page</Link></section>)}</div></main>;
-}
+export default function EditorIndex(){return <main><h1>Editing pages</h1><p>The published site is static. Edit the JSON files in <code>content/pages</code> and <code>content/scriptures</code> in your GitHub repository, then commit the changes. GitHub Actions will publish the updated site.</p><p><Link href="/topics">Browse encyclopedia articles</Link></p></main>;}
